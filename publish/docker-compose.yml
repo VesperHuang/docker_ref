@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  com.nebulae.cache_service_5002:
+    build:
+       context: ./
+       dockerfile: dockerfile_service_build
+       args:
+        project_name: com.nebulae.cacheService
+        zip_file_name: bsw_5002
+    ports:
+      - "5002:5002" 
+        
+  com.nebulae.cache_service_5007:
+    build:
+       context: ./
+       dockerfile: dockerfile_service_build
+       args:
+        project_name: com.nebulae.cacheService
+        zip_file_name: bsw_5007
+    ports:
+      - "5007:5007" 
+
+  com.nebulae.cache_service_5008:
+    build:
+       context: ./
+       dockerfile: dockerfile_service_build
+       args:
+        project_name: com.nebulae.cacheService
+        zip_file_name: incrown_5008
+    ports:
+      - "5008:5008" 
+
+  com.nebulae.cache_service_5009:
+    build:
+       context: ./
+       dockerfile: dockerfile_service_build
+       args:
+        project_name: com.nebulae.cacheService
+        zip_file_name: incrown_5009
+    ports:
+      - "5009:5009" 
+
+  com.nebulae.service_5010:
+    build:
+       context: ./
+       dockerfile: dockerfile_service_build
+       args:
+        project_name: com.nebulae.service
+        zip_file_name: log_5010
+    ports:
+      - "5009:5009"       
+             
+        

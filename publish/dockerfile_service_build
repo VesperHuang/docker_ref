@@ -1,0 +1,26 @@
+#command below
+#docker build -f dockerfile_service_build -t bitpay_5011:0.1 --build-arg project_name=com.nebulae.service --build-arg zip_file_name=bitpay .
+
+# copy everything
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+ARG project_name
+ARG zip_file_name
+ENV project_dll=${project_name}.dll
+ENV zip_file_name_tgz=${zip_file_name}.tgz
+ADD ./app/${zip_file_name_tgz} /workspace/nebulae/
+WORKDIR /workspace/nebulae/${project_name}
+RUN dotnet restore && dotnet publish -o /var/www/nebulae/ 
+RUN cd /var/www/nebulae/
+WORKDIR /var/www/nebulae/
+CMD dotnet $project_dll
+
+
+
+
+
+
+
+
+
+
+

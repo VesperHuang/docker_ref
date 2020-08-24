@@ -1,0 +1,55 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "com.nebulae.cacheService",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/basic/com.nebulae.cacheService/bin/Debug/netcoreapp3.1/com.nebulae.cacheService.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/basic/com.nebulae.cacheService",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "com.nebulae.bswService",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/bsw_5002/com.nebulae.bswService/bin/Debug/netcoreapp3.1/com.nebulae.bswService.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/bsw_5002/com.nebulae.bswService",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": "com.nebulae.bswService.prod",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/bsw_5007/com.nebulae.bswService/bin/Debug/netcoreapp3.1/com.nebulae.bswService.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/bsw_5007/com.nebulae.bswService",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },                 
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach",
+            "processId": "${command:pickProcess}"
+        }
+
+
+    ]
+}

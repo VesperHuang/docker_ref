@@ -1,0 +1,19 @@
+#command below
+#docker build -f Dockerfile -t nebulae:0.1 --build-arg project_name=com.nebulae.incrownService .
+
+# copy everything
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+ARG project_name
+ADD ./app/incrown_5008.tgz /workspace/nebulae/
+WORKDIR /workspace/nebulae/com.nebulae.incrownService
+RUN dotnet restore && dotnet publish -o /var/www/nebulae/ --configuration Release
+
+# build runtime image
+FROM mcr.microsoft.com/dotnet/core/aspnet:latest AS runtime
+ARG project_name
+WORKDIR /var/www/nebulae/
+COPY --from=build /var/www/nebulae/ .
+ENV project_dll=${project_name}.dll
+ENTRYPOINT dotnet $project_dll
+
+
