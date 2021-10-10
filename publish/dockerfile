@@ -1,0 +1,23 @@
+#command below
+#docker build -f dockerfile -t nebulae:0.1 --build-arg project_name=kooco.nebulae.service .
+
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+ARG project_name
+WORKDIR ./
+
+# copy csproj and restore as distinct layers
+COPY ./ ./
+#COPY ./nebulae/${project_name}/*.csproj ./${project_name}/
+#COPY ./nebulae/kooco.common/*.csproj ./kooco.common/
+#COPY ./nebulae/kooco.nebulae.service.test/*.csproj ./kooco.nebulae.service.test/
+
+WORKDIR ./
+RUN dotnet restore && dotnet publish -o /var/www/nebulae --configuration Release
+
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 AS runtime
+ARG project_name
+WORKDIR ./
+
+COPY --from=build ./var/www/nebulae/ ./
+ENV project_dll=${project_name}.dll
+ENTRYPOINT dotnet $project_dll
