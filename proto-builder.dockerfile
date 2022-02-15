@@ -1,5 +1,5 @@
 # docker build --no-cache --pull --force-rm -t rain/proto-builder:g1.14-p3.12.0 -f proto-builder.dockerfile .
-# docker run -v $(pwd):/go/src/app -w /go/src/app rain/proto-builder:g1.14-p3.12.0 sh -c 'protoc *.proto --go_out=plugins=grpc:.;'
+# docker run -v $(pwd):/go/src/app -w /go/src/app rain/proto-builder:g1.14-p3.12.0 sh -c 'protoc *.proto --go_out=plugins=grpc:. --micro_out=plugins=grpc:.;'
 
 FROM golang:1.14
 
